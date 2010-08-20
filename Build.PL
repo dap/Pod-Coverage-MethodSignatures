@@ -1,0 +1,26 @@
+use Module::Build;
+my $build = Module::Build->new(
+	module_name => 'Pod::Coverage::MethodSignatures',
+	license  => 'perl',
+
+	configure_requires => {
+		'Module::Build' => '0.360300',
+	},
+
+	requires => {
+		'perl'          => '5.8.1',
+		'Pod::Coverage' => '0.20',
+	},
+
+	dist_author => 'Darian Anthony Patrick <dap@darianpatrick.com>',
+	meta_merge => {
+		resources => {
+			license    => 'http://dev.perl.org/licenses/',
+			bugtracker =>
+				'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Pod::Coverage::MethodSignatures',
+			repository => 'https://github.com/dap/Pod-Coverage-MethodSignatures/tree',
+
+		},
+	}
+);
+$build->create_build_script;
