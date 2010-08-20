@@ -7,6 +7,10 @@ my $build = Module::Build->new(
 		'Module::Build' => '0.360300',
 	},
 
+	build_requires => {
+		'Test::Pod::Coverage' => '1.08',
+	},
+
 	requires => {
 		'perl'          => '5.8.1',
 		'Pod::Coverage' => '0.20',
