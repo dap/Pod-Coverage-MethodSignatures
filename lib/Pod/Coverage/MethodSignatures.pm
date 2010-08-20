@@ -22,7 +22,7 @@ sub _get_syms {
     for my $sym ( $syms->functions ) {
 
         # see if said method wasn't just imported from elsewhere
-        # using some Pod::Coverage pre-0.18 code
+        # using some pre-Pod::Coverage-0.18 code
         my $b_cv = B::svref_2object(\&{ $sym });
         print "checking origin package for '$sym':\n",
             "\t", $b_cv->GV->STASH->NAME, "\n" if TRACE_ALL;
