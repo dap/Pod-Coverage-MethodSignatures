@@ -1,5 +1,26 @@
 package Pod::Coverage::MethodSignatures;
 
+=head1 NAME
+
+Pod::Coverage::MethodSignatures - L<Pod::Coverage> extension for L<Method::Signatures>
+
+=head1 SYNOPSIS
+
+  use Pod::Coverage::MethodSignatures;
+
+  my $pcm = Pod::Coverage::MethodSignatures->new(package => 'Foo::Bar');
+  print 'Coverage: ', $pcm->coverage, "\n";
+
+=head1 DESCRIPTION
+
+This module works exactly as L<Pod::Coverage> does, but with a more chill
+approach to verifying code origin, as overridden in _get_syms(), and with
+whitelisting of func() and method(), as overridden in _trustme_check().
+
+See the documentation for L<Pod::Coverage> for more information on usage.
+
+=cut
+
 our $VERSION = "0.01";
 
 use base Pod::Coverage;
@@ -45,3 +66,26 @@ sub _trustme_check {
 }
 
 1;
+
+=head1 SEE ALSO
+
+L<Method::Signatures>,
+L<Pod::Coverage>,
+L<Test::Pod::Coverage>
+
+=head1 THANKS
+
+L<Method::Signatures::Moose> authors - I borrowed your Pod
+
+Michael Schwern - answered questions, verified hypotheses
+
+=head1 AUTHOR
+
+Darian Anthony Patrick E<lt>dap@darianpatrick.comE<gt>
+
+=head1 COPYRIGHT AND LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself. 
+
+=cut
