@@ -1,5 +1,6 @@
 use Module::Build;
 my $build = Module::Build->new(
+	(sign => 1),
 	module_name => 'Pod::Coverage::MethodSignatures',
 	license  => 'perl',
 
