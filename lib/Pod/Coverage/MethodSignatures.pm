@@ -18,23 +18,26 @@ sub _get_syms {
 
     my @symbols;
     for my $sym ( $syms->functions ) {
-print STDERR "Investigating $sym\n";
+
         # see if said method wasn't just imported from elsewhere
-        my $glob = do { no strict 'refs'; \*{$sym} };
-        my $o = B::svref_2object($glob);
-print STDERR "GOT to 1\n";
-        # in 5.005 this flag is not exposed via B, though it exists
-        my $imported_cv = eval { B::GVf_IMPORTED_CV() } || 0x80;
-        #next if $o->GvFLAGS & $imported_cv;
-print STDERR "GOT to 2\n";
+        # using some Pod::Coverage pre-0.18 code
+        my $b_cv = B::svref_2object(\&{ $sym });
+        next unless $b_cv->GV->STASH->NAME eq $self->{'package'};
+
         # check if it's on the whitelist
         $sym =~ s/$self->{package}:://;
         next if $self->_private_check($sym);
-print STDERR "GOT to 3\n";
+
         push @symbols, $sym;
     }
     return @symbols;
 }
 
-1;
+sub _trustme_check {
+    my ($self, $sym) = @_;
+    return (grep { $sym eq $_ } (qw/func method/))
+        || $self->SUPER::_trustme_check(@_);
+    
+}
 
+1;
