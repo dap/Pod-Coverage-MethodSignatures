@@ -8,7 +8,9 @@ my $build = Module::Build->new(
 	},
 
 	build_requires => {
-		'Test::Pod::Coverage' => '1.08',
+		'Method::Signatures' => '20100730',
+		'Test::More'          => '0.92',
+		'Test::Output'        => '0.16',
 	},
 
 	requires => {
