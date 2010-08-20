@@ -4,6 +4,8 @@ our $VERSION = "0.01";
 
 use base Pod::Coverage;
 
+BEGIN { defined &TRACE_ALL or eval 'sub TRACE_ALL () { 0 }' }
+
 sub _get_syms {
     my $self    = shift;
     my $package = shift;
@@ -22,6 +24,8 @@ sub _get_syms {
         # see if said method wasn't just imported from elsewhere
         # using some Pod::Coverage pre-0.18 code
         my $b_cv = B::svref_2object(\&{ $sym });
+        print "checking origin package for '$sym':\n",
+            "\t", $b_cv->GV->STASH->NAME, "\n" if TRACE_ALL;
         next unless $b_cv->GV->STASH->NAME eq $self->{'package'};
 
         # check if it's on the whitelist
