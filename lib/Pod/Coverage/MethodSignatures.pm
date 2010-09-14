@@ -11,6 +11,13 @@ Pod::Coverage::MethodSignatures - L<Pod::Coverage> extension for L<Method::Signa
   my $pcm = Pod::Coverage::MethodSignatures->new(package => 'Foo::Bar');
   print 'Coverage: ', $pcm->coverage, "\n";
 
+  # or in a pod-coverage.t
+
+  use Test::More;
+  eval "use Test::Pod::Coverage 1.00";
+  plan skip_all => "Test::Pod::Coverage 1.00 required for testing POD coverage" if $@;
+  all_pod_coverage_ok({ coverage_class => 'Pod::Coverage::MethodSignatures'});
+
 =head1 DESCRIPTION
 
 This module works exactly as L<Pod::Coverage> does, but with a more chill
@@ -19,9 +26,12 @@ whitelisting of func() and method(), as overridden in _trustme_check().
 
 See the documentation for L<Pod::Coverage> for more information on usage.
 
+This module might also support other things such as L<MooseX::Declare> and
+L<MooseX::Method::Signatures> but I haven't tested that.
+
 =cut
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 use base Pod::Coverage;
 
@@ -75,9 +85,9 @@ L<Test::Pod::Coverage>
 
 =head1 THANKS
 
-L<Method::Signatures::Moose> authors - I borrowed your Pod
+L<Pod::Coverage::Moose> authors - for the borrowed Pod
 
-Michael Schwern - answered questions, verified hypotheses
+Michael Schwern - for the answered questions and verified hypotheses
 
 =head1 AUTHOR
 

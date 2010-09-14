@@ -28,6 +28,8 @@ my $build = Module::Build->new(
 			repository => 'https://github.com/dap/Pod-Coverage-MethodSignatures/tree',
 
 		},
-	}
+	},
+	create_readme => 1,
+	create_license => 1,
 );
 $build->create_build_script;

@@ -10,3 +10,6 @@ t/halfpod.t
 t/nopod.t
 t/pod.t
 t/traceall.t
+README
+LICENSE
+Changes
