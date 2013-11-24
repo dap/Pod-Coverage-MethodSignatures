@@ -25,7 +25,7 @@ my $build = Module::Build->new(
 			license    => 'http://dev.perl.org/licenses/',
 			bugtracker =>
 				'http://rt.cpan.org/NoAuth/Bugs.html?Dist=Pod::Coverage::MethodSignatures',
-			repository => 'https://github.com/dap/Pod-Coverage-MethodSignatures/tree',
+			repository => 'https://github.com/dap/Pod-Coverage-MethodSignatures',
 
 		},
 	},
